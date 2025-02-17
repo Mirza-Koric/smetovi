@@ -1,0 +1,85 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div>
+				<h1 class="recenzijeTitle">Šta mislite o Smetovima?</h1>
+				<h1 class="recenzijeSubtitle">Napišite svoje mišljenje i ocjenu o Smetovima i podjelite je sa drugima!</h1>
+				<input type="text" class="recenzijeInput" placeholder="Unesite svoje mišljenje o ovoj stranici...">
+				<div class="rating-form-container">
+					<form class="rating">
+						<label>
+						<input type="radio" name="stars" value="1" />
+						<span class="icon">★</span>
+						</label>
+						<label>
+						<input type="radio" name="stars" value="2" />
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						</label>
+						<label>
+						<input type="radio" name="stars" value="3" />
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						<span class="icon">★</span>   
+						</label>
+						<label>
+						<input type="radio" name="stars" value="4" />
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						</label>
+						<label>
+						<input type="radio" name="stars" value="5" />
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						</label>
+					</form>
+				</div>
+				<button class="recenzijeButton">Pošalji recenziju</button>
+			</div>
+			<div class="recenzijeContainer">
+				<div class="recenzija">
+					<h1 class="recenzijaTitle">Korisnik123 ★★★★★</h1>
+					<p class="recenzijaText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit nulla id imperdiet auctor. </p>
+					<h1 class="recenzijaTitle">Korisnik123 ★★★★★</h1>
+					<p class="recenzijaText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit nulla id imperdiet auctor. </p>
+					<h1 class="recenzijaTitle">Korisnik123 ★★★★★</h1>
+					<p class="recenzijaText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit nulla id imperdiet auctor. </p>
+					<h1 class="recenzijaTitle">Korisnik123 ★★★★★</h1>
+					<p class="recenzijaText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit nulla id imperdiet auctor. </p>
+				</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.landing-background {
+		background-image: url('/landing-image.png'); 
+		background-size: cover; 
+		background-position: center; 
+		height: 100vh; 
+		width: 100vw;
+		color: white; 
+		display: flex; 
+		justify-content: center; 
+		align-items: center; 
+	}
+</style>
