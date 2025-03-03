@@ -19,6 +19,12 @@ export default function MapComponent({ pins }: MapComponentProps) {
       if (typeof window !== "undefined") {
         const L = await import("leaflet");
 
+        L.Marker.prototype.options.icon = L.divIcon({
+          html: '<i class="fas fa-map-marker-alt fa-2x"></i>',
+          iconSize: [20, 20],
+          className: 'myDivIcon'
+        });
+
         const map = L.map("map", {
           center: [44.24541, 17.96368],
           zoom: 11,
@@ -106,6 +112,11 @@ export default function MapComponent({ pins }: MapComponentProps) {
           }
           .leaflet-top {
             margin-top: 54px !important;
+          }
+          .myDivIcon {
+            background: none;
+            border: none;
+            color: #131240; /* You can change this color */
           }
         `}
       </style>
