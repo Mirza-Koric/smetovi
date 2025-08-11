@@ -32,8 +32,8 @@ const posts = (await getCollection('blog')).sort(
 											<p class="date mb-0 text-gray-400">
 												<FormattedDate date={post.data.pubDate} />
 											</p>
-											<h4 class="title font-bold font-exo2 text-lg sm:text-base md:text-xl lg:text-2xl xl:text-3xl">{post.data.title}</h4>
-											<button>Pročitaj više</button>
+											<h4 class="title font-bold font-exo2 text-lg text-sky-950 sm:text-base md:text-xl lg:text-2xl xl:text-3xl">{post.data.title}</h4>
+											<button class="bg-sky-950 px-6 py-2 text-white" style="clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));">Pročitaj više</button>
 										</div>
 									</div>
 								</a>
