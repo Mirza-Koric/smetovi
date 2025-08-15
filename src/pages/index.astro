@@ -17,14 +17,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<img id="logo" src="/smetovi-logo.png" alt="" srcset="">
 		</main>
 		<!-- Monument -->
-		<div class="flex max-sm:flex-col lg:h-screen overflow-hidden">
+		<div class="flex max-sm:flex-col lg:h-screen overflow-hidden observed">
 			<!-- image -->
 			<div class="relative w-3/5 max-sm:w-screen fade slide-left">
 				<img src="/tmp-images/Monument_s.jpg" alt="" width="100%" class="z-0 h-full w-full object-cover" style="filter: brightness(1.5);">
 				<div class="absolute inset-0 bg-gradient-to-r max-sm:bg-gradient-to-b from-transparent from-50% to-white"></div>
 			</div>
 			<!-- text -->
-			<div class="relative w-2/5 max-sm:w-screen z-10 items-center -ml-20 max-sm:ml-0 mt-[120px] max-sm:-mt-40 text-blue-950 max-sm:p-4">
+			<div class="relative w-2/5 max-sm:w-screen z-10 items-center -ml-20 max-sm:ml-0 mt-[120px] max-sm:-mt-40 text-blue-950 max-sm:p-4 fade slide-bottom">
 				<h1 class="text-3xl font-exo2 font-bold mb-2 text-blue-950"> ZENIČKA PLANINSKA OAZA </h1>
 				<div class="ttl-sep w-20 h-1 bg-orange-500 my-2"></div>
 				<p class="mt-5 text-[18px]">
@@ -45,9 +45,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			</div>
 		</div>
 		<!-- Fauna and flora -->
-		<div class="flex max-sm:flex-col-reverse lg:h-screen overflow-hidden">
+		<div class="flex max-sm:flex-col-reverse lg:h-screen overflow-hidden observed">
 			<!-- text -->
-			<div class="relative w-2/5 max-sm:w-screen z-10 items-center ml-20 -mr-20 max-sm:ml-0 max-sm:mr-0 mt-[120px] max-sm:-mt-40 text-blue-950 max-sm:p-4">
+			<div class="relative w-2/5 max-sm:w-screen z-10 items-center ml-20 -mr-20 max-sm:ml-0 max-sm:mr-0 mt-[120px] max-sm:-mt-40 text-blue-950 max-sm:p-4 fade slide-bottom">
 				<h1 class="text-3xl font-exo2 font-bold mb-2 text-blue-950"> FLORA I FAUNA </h1>
 				<div class="ttl-sep w-20 h-1 bg-orange-500 my-2"></div>
 				<p class="mt-5 text-[18px]">
@@ -110,6 +110,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	.slide-right{
 		transform: translateX(50px);
 	}
+	.slide-bottom{
+		transform: translateY(50px);
+	}
 	.show{
 		opacity: 1;
 		transform: translateX(0);
@@ -142,10 +145,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	const observer = new IntersectionObserver((entries) => {
 		entries.forEach((entry)=>{
 			if(entry.isIntersecting){
-				entry.target.classList.add('show');
+				entry.target.firstElementChild?.classList.add('show');
+				entry.target.lastElementChild?.classList.add('show');
 			}
 			else{
-				entry.target.classList.remove('show');
+				entry.target.firstElementChild?.classList.remove('show');
+				entry.target.lastElementChild?.classList.remove('show');
 			}
 		});
 	},
@@ -153,6 +158,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		threshold: 0.4
 	});
 
-	const hiddenElements = document.querySelectorAll('.fade');
-	hiddenElements.forEach((el) => observer.observe(el));
+	const observedElements = document.querySelectorAll('.observed');
+	observedElements.forEach((el) => observer.observe(el));
 </script>
