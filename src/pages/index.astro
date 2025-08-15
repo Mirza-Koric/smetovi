@@ -13,9 +13,68 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main class="landing-background">
-			<img src="/smetovi-logo.png" alt="" srcset="">
+		<main id="main" class="landing-background">
+			<img id="logo" src="/smetovi-logo.png" alt="" srcset="">
 		</main>
+		<!-- Monument -->
+		<div class="flex max-sm:flex-col lg:h-screen overflow-hidden">
+			<!-- image -->
+			<div class="relative w-3/5 max-sm:w-screen fade slide-left">
+				<img src="/tmp-images/Monument_s.jpg" alt="" width="100%" class="z-0 h-full w-full object-cover" style="filter: brightness(1.5);">
+				<div class="absolute inset-0 bg-gradient-to-r max-sm:bg-gradient-to-b from-transparent from-50% to-white"></div>
+			</div>
+			<!-- text -->
+			<div class="relative w-2/5 max-sm:w-screen z-10 items-center -ml-20 max-sm:ml-0 mt-[120px] max-sm:-mt-40 text-blue-950 max-sm:p-4">
+				<h1 class="text-3xl font-exo2 font-bold mb-2 text-blue-950"> ZENIČKA PLANINSKA OAZA </h1>
+				<div class="ttl-sep w-20 h-1 bg-orange-500 my-2"></div>
+				<p class="mt-5 text-[18px]">
+					Smetovi, planina smještena u općini Zenica, uzdiže se na 1.025metara nadmorke visine, oko 8 kilometara od centra grada.
+					Popularno izletište nudi staze za šetnju, biciklizam, zimske sportove i sportske terene, uz restoran, prenoćište i sportsko-rekreacijski centar.
+				</p>
+				<p class="mt-4 text-[18px]" >
+					Prema predaji, ime "Smetovi" potječe od gorostasa Vrana koji se zbunio u borbi s ratnikom Dukom, što je ostavilo trag u nazivu
+					ovog područja. Na vrhu planine nalazi se spomenik borcima Zeničkog partizanskog odreda iz 1968. godine. Sa Smetova se, za vedrog dana,
+					pruža pogled do 100 km, obuhvatajući planine poput Zvijezde, Vranice i Vlašića. Planinarsko društvo "Željezara" vodi planinarski dom,
+					smješten uz potok Mračaju na 940 metara nadmorske visine.
+				</p>
+				<a href="/map">
+					<button class="bg-blue-950 px-10 py-2 mt-5 text-white" style="clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));">
+						Mapa
+					</button>
+				</a>
+			</div>
+		</div>
+		<!-- Fauna and flora -->
+		<div class="flex max-sm:flex-col-reverse lg:h-screen overflow-hidden">
+			<!-- text -->
+			<div class="relative w-2/5 max-sm:w-screen z-10 items-center ml-20 -mr-20 max-sm:ml-0 max-sm:mr-0 mt-[120px] max-sm:-mt-40 text-blue-950 max-sm:p-4">
+				<h1 class="text-3xl font-exo2 font-bold mb-2 text-blue-950"> FLORA I FAUNA </h1>
+				<div class="ttl-sep w-20 h-1 bg-orange-500 my-2"></div>
+				<p class="mt-5 text-[18px]">
+					Prirodna ljepota Smetova nadupunjuje se njegovim ekološkim značajem. Dom je raznolikom biljnom i životinjskom svijetu,
+					neki od njih endemični za regiju, čineći ga važnim područjem za očuvanje biološke raznolikosti.
+				</p>
+				<p class="mt-4 text-[18px]" >
+					Za one koji posjećuju Zenicu, putovanje do Smetova nije samo planinarenje; to je prilika za povezivanje s prirodom,
+					doživljaj ljepote bosanskog krajolika i uživanje u raznim aktivnostima na otvorenom. Smetovi ne nude samo osvježavajući
+					bijeg od gradske vreve, već pružaju prostor za fizičko i mentalno osvježenje, čineći ga dragocjenim prirodnim blagom regije.
+				</p>
+				<a href="/organizations">
+					<button class="bg-blue-950 px-10 py-2 mt-5 text-white" style="clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));">
+						Istraži prirodu
+					</button>
+				</a>
+			</div>
+			<!-- image -->
+			<div class="relative w-3/5 max-sm:w-screen fade slide-right">
+				<picture>
+					<source media="(max-width: 640px)" srcset="/tmp-images/Fox_s.jpg">
+					<source media="(min-width: 641px)" srcset="/tmp-images/Fox.jpg">
+					<img src="/tmp-images/Fox.jpg" alt="" width="100%" class="z-0 h-full w-full object-cover" style="transform: scaleX(-1);">
+				</picture>
+				<div class="absolute inset-0 bg-gradient-to-l max-sm:bg-gradient-to-b from-transparent from-50% to-white"></div>
+			</div>
+		</div>
 		<Footer />
 	</body>
 </html>
@@ -36,4 +95,64 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		max-width: 100;
 		height: auto;
 	}
+	.fade{
+		opacity: 0;
+		transition: all 1s ease;
+	}
+	@media(prefers-reduced-motion){
+		.fade{
+			transition:none;
+		}
+	}
+	.slide-left{
+		transform: translateX(-50px);
+	}
+	.slide-right{
+		transform: translateX(50px);
+	}
+	.show{
+		opacity: 1;
+		transform: translateX(0);
+	}
 </style>
+
+<script>
+	const main = document.getElementById("main");
+ 	const logo = document.getElementById("logo");
+
+	const logoObserver = new IntersectionObserver(
+		(entries) => {
+		entries.forEach(entry => {
+			let ratio = entry.intersectionRatio;
+			let opacity = (ratio - 0.5) / 0.5;
+			opacity = Math.max(0, Math.min(1, opacity));
+			if(logo!=null){
+				logo.style.opacity = opacity.toString();
+			}
+		});
+		},
+		{
+		threshold: Array.from({ length: 101 }, (_, i) => i / 100) 
+		}
+	);
+	if(main!=null){
+		logoObserver.observe(main);
+	}
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry)=>{
+			if(entry.isIntersecting){
+				entry.target.classList.add('show');
+			}
+			else{
+				entry.target.classList.remove('show');
+			}
+		});
+	},
+	{
+		threshold: 0.4
+	});
+
+	const hiddenElements = document.querySelectorAll('.fade');
+	hiddenElements.forEach((el) => observer.observe(el));
+</script>
