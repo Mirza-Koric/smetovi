@@ -351,5 +351,57 @@ ul {
 
 .recenzijaTitle {
   margin-top: 50px;
+}
 
+.diagonal-wrapper {
+  background-color: #0f172a; /* darkBlue or use Tailwind var */
+  padding: 2px; /* matches border-2 */
+  display: inline-block;
+  clip-path: polygon(
+    0% 0%, 90% 0%, 100% 10%,
+    100% 100%, 10% 100%, 0% 90%
+  );
+}
+
+
+.diagonal-border {
+  clip-path: polygon(
+    0% 0%,
+    90% 0%,
+    100% 10%,
+    100% 100%,
+    10% 100%,
+    0% 90%
+  );
+}
+
+.diagonal-square {
+  @apply bg-white text-darkBlue;
+  clip-path: polygon(
+    0% 0%,
+    90% 0%,
+    100% 10%,
+    100% 100%,
+    10% 100%,
+    0% 90%
+  );
+}
+
+.contact-form label {
+  font-family: "Exo2", sans-serif; 
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0;
+}
+
+.contact-form input::placeholder, textarea::placeholder {
+  font-weight: 100;
+}
+
+.contact-page {
+  background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.5)), url(/public/images/contact-background.png);
+  background-size: cover;        /* scale to cover */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
 }
