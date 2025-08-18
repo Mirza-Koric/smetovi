@@ -17,5 +17,8 @@ export default defineConfig({
     platformProxy: {
       enabled: true
     }
-  })
+  }),
+  vite: {
+    plugins: [tailwind()]
+  }
 });
