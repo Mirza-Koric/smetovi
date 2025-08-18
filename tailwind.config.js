@@ -6,6 +6,12 @@ export default {
       colors: {
         "pastel-green": "#77dd77",
         "tomato-red": "#ff6347",
+        darkBlue: {
+          DEFAULT: '#161441'
+        },
+        yellow: {
+          DEFAULT: '#f6901e'
+        },
         gray: {
           light: "#46479E",
           DEFAULT: "#60739F",
